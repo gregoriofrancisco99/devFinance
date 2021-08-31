@@ -1,0 +1,154 @@
+#wrapper {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+#banner.Screen.left {
+  width: 40%;
+  height: 100%;
+
+  background: linear-gradient(to right, rgb(113, 184, 88), rgb(97, 202, 89));
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+#banner #announce {
+  width: 60%;
+  margin-bottom: 8em;
+  color: #fff;
+  pointer-events: none;
+}
+#announce h1 {
+  margin-bottom: 0.25em;
+  font-size: 4em;
+  letter-spacing: 3px;
+  font-weight: 300;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+#announce h1 #dollarSign {
+  font-size: 1.2em;
+  rotate: -8deg;
+}
+#announce p {
+  font-size: 2em;
+  line-height: 1.35em;
+  font-weight: 200;
+}
+
+.Screen.right {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.Screen.right h2 {
+  font-size: 3em;
+  letter-spacing: 4px;
+  font-weight: 200;
+}
+.Screen.right form {
+  width: 50%;
+  margin-top: 2em;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-direction: column;
+}
+.Screen.right form fieldset {
+  border: none;
+}
+form div.inputBox {
+  position: relative;
+  margin-bottom: 1em;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-direction: column;
+}
+form div.inputBox input {
+  height: 3.25em;
+  padding: 0 1em;
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  font-size: 13px;
+
+  border-radius: 0.25em;
+  outline: none;
+}
+form div.inputBox input:active,
+form div.inputBox input:valid,
+form div.inputBox input:focus {
+  border: solid 2px rgba(0, 100, 0, 0.3);
+}
+form div.inputBox label {
+  margin-left: 1em;
+  position: absolute;
+  left: 0;
+  font-size: 15px;
+  font-weight: 300;
+  transition: all ease 0.3s;
+  pointer-events: none;
+}
+form div.inputBox input:focus ~ label,
+form div.inputBox input:valid ~ label {
+  background: #fff;
+  padding: 0 0.15em;
+  transform: translateY(-20px);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: rgba(0, 75, 0, 0.75);
+}
+#btnArea {
+  width: 100%;
+  margin-top: 1em;
+  display: flex;
+  align-self: center;
+  align-items: stretch;
+  justify-content: center;
+  flex-direction: column;
+}
+#btnArea .btn {
+  padding: 0.45em 0;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 0.2em;
+}
+#fgtPassword {
+  color: #000;
+  text-decoration: none;
+  display: flex;
+  align-self: center;
+}
+#fgtPassword.btn {
+  margin-top: 0.25em;
+
+  background: transparent;
+  border: solid 1px transparent;
+
+  font-weight: 500;
+  transition: all ease 0.2s;
+
+  color: rgba(255, 0, 0, 0.5);
+}
+
+#login.btn {
+  background: transparent;
+  border: solid 1px rgba(0, 75, 0, 0.75);
+  color: inherit;
+  transition: all ease 0.2s;
+}
+#login.btn:hover {
+  background: rgba(0, 75, 0, 0.75);
+  border: solid 1px rgba(0, 75, 0, 0.75);
+  color: #fff;
+}

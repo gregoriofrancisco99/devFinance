@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/style/global.css">
+  <link rel="stylesheet" href="./assets/style/style.css">
+  <script src="./assets/js/jquery-3.6.0.min.js"></script>
+  <title>DevCave - Finance</title>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="banner"></div>
+
+    <div id="contentWrapper">
+      <header>
+        <nav id="transactionPanel">
+          <ul>
+            <li class="btn transactionPanel" id="incomes"><a href="#" title="Total de entradas">
+                <span id="icon">
+                  <img src="./assets/icons/arrow-alt-circle-down.svg" alt="arrow circle down">
+                </span>
+                <span class="amount">0,00</span>
+                <span id="moeda">akz</span></a>
+            </li>
+            <li class="btn transactionPanel" id="outcomes"><a href="#" title="Total de saída">
+                <span id="icon">
+                  <img src="./assets/icons/arrow-alt-circle-up.svg" alt="arrow circle up">
+                </span>
+                <span class="amount">0,00</span>
+                <span id="moeda">akz</span></a></a></li>
+            <li class="btn transactionPanel" id="total" title="Montante restante">
+              <span id="icon">
+                <img src="./assets/icons/chart-bar.svg" alt="chart bar">
+              </span>
+              <span class="amount">0,00</span>
+              <span id="moeda">akz</span></a></a>
+            </li>
+            </li>
+          </ul>
+          <button class="btn" id="newTransaction" title="Nova Transação"><span id="icon">
+              <img src="./assets/icons/arrow-alt-circle-right.svg" alt="arrow circle right">
+            </span><span>Nova Transação</span></button>
+        </nav>
+        <div id="openMenu" class="btn">
+          <span></span>
+        </div>
+      </header>
+      <main>
+        <section>
+          <article>
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Data</th>
+                  <th>Montante</th>
+                </tr>
+
+              </thead>
+              <tbody>
+                <!-- JavaScript should fill this place -->
+              </tbody>
+            </table>
+          </article>
+        </section>
+      </main>
+    </div>
+    <div id="menu">
+      <h3>Menu</h3>
+      <ul>
+        <a href="assets/pages/talkToUs.html" target="_self"><li>Fale connosco</li></a>
+        <li class="btn" id="closeMenu">Fechar menu</li>
+      </ul>
+      <footer style="display: none;"> 
+          <p>Finance&dollar; &copy;</p>
+          <p>DevCave &trade;</p>
+      </footer>
+    </div>
+    <div id="darkbg">
+      <div id="recordTransiction">
+        <form action="">
+          <div id="name" class="textbox">
+            <input type="text" id="name" required>
+            <label for="name">Nome da transação</label>
+          </div>
+          <div id="value" class="textbox">
+            <input type="number" id="value" step="0.5" required>
+            <label for="quantity">Valor</label>
+          </div>
+          <div id="date" class="textbox">
+            <label for="date">Data</label>
+            <input type="date" id="date" required>
+          </div>
+          <div id="btnarea">
+            <input  class="btn" id="send" type="submit" value="Registrar">
+            <button class="btn" id="cancel" type="reset">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    
+
+    <script src="./assets/js/funcionality.js"></script>
+  </div>
+</body>
+
+</html>
