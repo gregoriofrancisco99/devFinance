@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,34 +14,50 @@
 
   <title>dev.finance$</title>
 </head>
+
 <body>
   <header>
-    <h1 id="logo">dev.finance$</h1>
+    <img src="./assets/logo.svg" alt="logo dev.finace$">
   </header>
   <main>
     <section id="balance">
-      <h2>Balanço</h2>
+      <h2 class="sr-only">Balanço</h2>
       <div class="card">
-        <h3>Entradas</h3>
+        <h3>
+          <span>Entradas</span>
+          <img src="./assets/income.svg" alt="Imagem de entradas">
+        </h3>
         <p>R$ 5.000,00</p>
       </div>
       <div class="card">
-        <h3>Saídas</h3>
+        <h3>
+          <span>Saídas</span>
+          <img src="./assets/expense.svg" alt="Imagem de saídas">
+        </h3>
         <p>R$ 2.000,00</p>
       </div>
       <div class="card total">
-        <h3>Total</h3>
+        <h3>
+          <span>Total</span>
+          <img src="./assets/total.svg" alt="Imagem de total">
+        </h3>
         <p>R$ 3.000,00</p>
       </div>
     </section>
     <section id="transactions">
-      <h2>Transações</h2>
+      <a 
+        href="#" 
+        class="button new"
+        onclick="modal.open()"
+      />+ New transaction</a>
+      <h2 class="sr-only">Transações</h2>
       <table id="data-table">
         <thead>
           <tr>
             <th>Descrição</th>
             <th>Valor</th>
             <th>Data</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -48,23 +65,78 @@
             <td class="description">Luz</td>
             <td class="expense">- R$ 500,00</td>
             <td class="date">23/01/2021</td>
+            <td>
+              <img src="./assets/minus.svg" alt="Eliminar transação">
+            </td>
           </tr>
           <tr>
             <td class="description">Criação de website</td>
             <td class="income"> R$ 5.000,00</td>
             <td class="date">23/01/2021</td>
+            <td>
+              <img src="./assets/minus.svg" alt="Eliminar transação">
+            </td>
           </tr>
           <tr>
             <td class="description">Internet</td>
             <td class="expense">- R$ 200,00</td>
             <td class="date">23/01/2021</td>
+            <td>
+              <img src="./assets/minus.svg" alt="Eliminar transação">
+            </td>
           </tr>
         </tbody>
       </table>
     </section>
   </main>
+  <div class="modal-overlay">
+    <div class="modal">
+      <h2>Nova transação</h2>
+      <form action="">
+        <div class="input-group">
+          <label for="description" class="sr-only">Descrição</label>
+          <input type="text" id="description" name="description" placeholder="Descrição" />
+        </div>
+        <div class="input-group">
+          <label for="amount" class="sr-only">Valor</label>
+          <input type="number" step="5" id="amount" name="amount" placeholder="0,00" />
+        </div>
+        <small>Use o sinal - (negativo) para despesas e , (virgula) para casas decimais</small>
+        <div class="input-group">
+          <label for="date" class="sr-only">Data</label>
+          <input type="date" id="date" name="date" />
+        </div>
+        <div class="input-group actions">
+          <a 
+            href="#" 
+            class="button cancel"
+            onclick="modal.close()"
+          />Cancelar</a>
+          <button type="submit">Enviar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
   <footer>
-    <p>dev.finace$ <br />design by RocketSeat, <br />code  by: Gregório Francisco</p>
+    <p>dev.finace$ <br />design by RocketSeat, <br />code by: Gregório Francisco</p>
   </footer>
+  <script>
+    const modal = {
+      open(){
+        document.querySelector('.modal-overlay').classList.add('active');
+      },
+      close(){
+        document.querySelector('.modal-overlay').classList.remove('active');
+        /*function clearFields(){
+          document.querySelector('#description').
+          document.querySelector('#amount').classList.remove('active');
+          document.querySelector('#date').classList.remove('active');
+          
+        }*/
+      }
+    }
+  </script>
 </body>
+
 </html>
