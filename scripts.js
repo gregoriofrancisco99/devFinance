@@ -109,9 +109,9 @@ const Utils = {
     
     value = Number(value) / 100;
     
-    value = value.toLocaleString('pt-BR', {
+    value = value.toLocaleString('pt-PT', {
       style: 'currency',
-      currency: 'BRL'
+      currency: 'AOA'
     });
 
     return (signal + value)
@@ -188,4 +188,5 @@ const App = {
     App.init()
   }
 }
+
 App.init();
