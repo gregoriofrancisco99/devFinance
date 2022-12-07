@@ -27,21 +27,21 @@
           <span>Entradas</span>
           <img src="./assets/income.svg" alt="Imagem de entradas">
         </h3>
-        <p>R$ 5.000,00</p>
+        <p id="total-income">R$ 0.000,00</p>
       </div>
       <div class="card">
         <h3>
           <span>Saídas</span>
           <img src="./assets/expense.svg" alt="Imagem de saídas">
         </h3>
-        <p>R$ 2.000,00</p>
+        <p id="total-expense">R$ 0.000,00</p>
       </div>
       <div class="card total">
         <h3>
           <span>Total</span>
           <img src="./assets/total.svg" alt="Imagem de total">
         </h3>
-        <p>R$ 3.000,00</p>
+        <p id="total-amount">R$ 0.000,00</p>
       </div>
     </section>
     <section id="transactions">
@@ -61,30 +61,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="description">Luz</td>
-            <td class="expense">- R$ 500,00</td>
-            <td class="date">23/01/2021</td>
-            <td>
-              <img src="./assets/minus.svg" alt="Eliminar transação">
-            </td>
-          </tr>
-          <tr>
-            <td class="description">Criação de website</td>
-            <td class="income"> R$ 5.000,00</td>
-            <td class="date">23/01/2021</td>
-            <td>
-              <img src="./assets/minus.svg" alt="Eliminar transação">
-            </td>
-          </tr>
-          <tr>
-            <td class="description">Internet</td>
-            <td class="expense">- R$ 200,00</td>
-            <td class="date">23/01/2021</td>
-            <td>
-              <img src="./assets/minus.svg" alt="Eliminar transação">
-            </td>
-          </tr>
+          <!--JavaScrip should fill this area-->
         </tbody>
       </table>
     </section>
@@ -92,19 +69,34 @@
   <div class="modal-overlay">
     <div class="modal">
       <h2>Nova transação</h2>
-      <form action="">
+      <form action="" onsubmit="Form.submit(event)">
         <div class="input-group">
           <label for="description" class="sr-only">Descrição</label>
-          <input type="text" id="description" name="description" placeholder="Descrição" />
+          <input 
+            type="text" 
+            id="description" 
+            name="description" 
+            placeholder="Descrição" 
+          />
         </div>
         <div class="input-group">
           <label for="amount" class="sr-only">Valor</label>
-          <input type="number" step="5" id="amount" name="amount" placeholder="0,00" />
+          <input 
+            type="number" 
+            step="0.01" 
+            id="amount" 
+            name="amount" 
+            placeholder="0.00" 
+          />
         </div>
-        <small>Use o sinal - (negativo) para despesas e , (virgula) para casas decimais</small>
+        <small>Use o sinal - (negativo) para despesas e . (ponto) para casas decimais</small>
         <div class="input-group">
           <label for="date" class="sr-only">Data</label>
-          <input type="date" id="date" name="date" />
+          <input 
+            type="date" 
+            id="date" 
+            name="date" 
+          />
         </div>
         <div class="input-group actions">
           <a 
@@ -121,22 +113,7 @@
   <footer>
     <p>dev.finace$ <br />design by RocketSeat, <br />code by: Gregório Francisco</p>
   </footer>
-  <script>
-    const modal = {
-      open(){
-        document.querySelector('.modal-overlay').classList.add('active');
-      },
-      close(){
-        document.querySelector('.modal-overlay').classList.remove('active');
-        /*function clearFields(){
-          document.querySelector('#description').
-          document.querySelector('#amount').classList.remove('active');
-          document.querySelector('#date').classList.remove('active');
-          
-        }*/
-      }
-    }
-  </script>
+  <script src="./scripts.js"></script>
 </body>
 
 </html>
