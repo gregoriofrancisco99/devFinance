@@ -6,9 +6,11 @@ const modal = {
     document.querySelector('.modal-overlay').classList.remove('active');
   }
 }
+
 const Storage = {
   get() {
-    return JSON.parse(localStorage.getItem('dev.finance:transactions')) || [];
+    const data = localStorage.getItem('dev.finance:transactions');
+    return data === null || data === undefined ? JSON.parse((data)) : [];
   },
   set(transactions) {
     localStorage.setItem('dev.finance:transactions', JSON.stringify(transactions));
@@ -20,18 +22,18 @@ const transactionsSummary = {
   
   incomes() {
     let income = 0;
-    transactionsSummary.all.forEach(row => {
-      if(row.amount > 0) {
-        income += row.amount;
+    transactionsSummary.all.forEach(transaction => {
+      if(transaction.amount > 0) {
+        income += transaction.amount;
       }
     })
     return income;
   },
   expenses() {  
     let expense = 0;
-    transactionsSummary.all.forEach(row => {
-      if(row.amount < 0) {
-        expense += row.amount;
+    transactionsSummary.all.forEach(transaction => {
+      if(transaction.amount < 0) {
+        expense += transaction.amount;
       }
     })
     return expense;
@@ -48,6 +50,7 @@ const transactionsSummary = {
     App.reload();
   }
 }
+console.log(transactionsSummary.all);
 
 const DOM = {
   transactionsContainer: document.querySelector('#data-table tbody'),
@@ -67,13 +70,13 @@ const DOM = {
     const html =  
     `
       <td class="description">${transaction.description}</td>
+      <td class="description">${transaction.budget_type}</td>
       <td class="${className}">${amount}</td>
       <td class="date">${transaction.date}</td>
       <td>
       <img onClick=(transactionsSummary.remove(${index})) src="./assets/minus.svg" alt="Eliminar transação">
       </td>
     `
-    //console.log(amount)
     return html;
   },
   displayBalance() {
@@ -83,8 +86,6 @@ const DOM = {
       .innerHTML =  Utils.formatCurrency(transactionsSummary.expenses());
     document.getElementById('total-amount')
       .innerHTML =  Utils.formatCurrency(transactionsSummary.total());
-
-    
   },
   clear() {
     DOM.transactionsContainer.innerHTML = '';
@@ -118,24 +119,26 @@ const Utils = {
   }
 }
 
-
 const Form = {
   description: document.getElementById('description'),
+  budget_type: document.getElementById('buget_type'),
   amount: document.getElementById('amount'),
   date: document.getElementById('date'),
 
   getValues() {
     return {
       description: Form.description.value,
+      budget_type: Form.budget_type.value,
       amount: Form.amount.value,
       date: Form.date.value,
     }
   },
   validateFields() {
-    const {description, amount, date } = Form.getValues();
+    const {description, budget_type, amount, date } = Form.getValues();
 
     if(
         description.trim() === '' ||
+        budget_type.trim() === '' ||
         amount.trim() === '' ||
         date.trim() === ''
       ) {
@@ -143,19 +146,21 @@ const Form = {
     }
   },
   formatValues(){
-    let {description, amount, date } = Form.getValues();
+    let {description, budget_type, amount, date } = Form.getValues();
     
     amount = Utils.formatAmount(amount);
     date = Utils.formatDate(date);
 
     return {
       description,
+      budget_type,
       amount,
       date
     }
   },
   clearFields() {
     Form.description.value = '';
+    Form.budget_type.value = '';
     Form.amount.value = '';
     Form.date.value = '';
   },
@@ -165,9 +170,9 @@ const Form = {
     try {
       Form.validateFields();
       const newTransaction = Form.formatValues()
-      transactionsSummary.add(newTransaction);
       Form.clearFields();
       modal.close();
+      transactionsSummary.add(newTransaction);
     } catch (error) {
       alert(error.message)
     }
@@ -175,13 +180,12 @@ const Form = {
 }
 
 const App = {
-  init() {
-        
+  init() {     
     // Add transactions in storage to the table
     transactionsSummary.all.forEach(DOM.addTransaction);
 
     DOM.displayBalance();
-    Storage.set(transactionsSummary.all);
+    Storage.set(console.log(transactionsSummary.all));
   },
   reload() {
     DOM.clear()

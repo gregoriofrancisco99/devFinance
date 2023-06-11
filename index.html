@@ -55,6 +55,7 @@
         <thead>
           <tr>
             <th>Descrição</th>
+            <th>Budget type</th>
             <th>Valor</th>
             <th>Data</th>
             <th></th>
@@ -78,6 +79,21 @@
             name="description" 
             placeholder="Descrição" 
           />
+        </div>
+        <div class="input-group">
+          <label for="buget_type" >Buget type</label>
+          <select id="buget_type" name="buget type">
+            <option value="Housing">Housing</option>
+            <option value="Food">Food</option>
+            <option value="Comunication">Comunication</option>
+            <option value="Transport">Transport</option>
+            <option value="Utility">Utility</option>
+            <option value="Health and care">Health and care</option>
+            <option value="Savings">Savings</option>
+            <option value="Personal expenses">Personal expenses</option>
+            <option value="Recreation and entertainment">Recreation and entertainment</option>
+            <option value="Miscellanious">Miscellanious</option>
+          </select>
         </div>
         <div class="input-group">
           <label for="amount" class="sr-only">Valor</label>
