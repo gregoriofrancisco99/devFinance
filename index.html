@@ -45,11 +45,7 @@
       </div>
     </section>
     <section id="transactions">
-      <a 
-        href="#" 
-        class="button new"
-        onclick="modal.open()"
-      />+ New transaction</a>
+      <button id="new-transaction" class="button new">+ New transaction</button>
       <h2 class="sr-only">Transações</h2>
       <table id="data-table">
         <thead>
@@ -66,10 +62,10 @@
       </table>
     </section>
   </main>
-  <div class="modal-overlay">
-    <div class="modal">
-      <h2>Nova transação</h2>
-      <form action="" onsubmit="Form.submit(event)">
+  <div class="modal-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="new-transaction-title">
+      <h2 id="new-transaction-title">Nova transação</h2>
+      <form action="" id="transaction-form">
         <div class="input-group">
           <label for="description" class="sr-only">Descrição</label>
           <input 
@@ -99,11 +95,7 @@
           />
         </div>
         <div class="input-group actions">
-          <a 
-            href="#" 
-            class="button cancel"
-            onclick="modal.close()"
-          />Cancelar</a>
+          <button type="button" id="cancel-button" class="button cancel">Cancelar</button>
           <button type="submit">Enviar</button>
         </div>
 

@@ -46,19 +46,20 @@ a:hover {
 }
 
 .button.new {
+  width: fit-content;
+  border: none;
+  
+  text-align: left;
+  color: var(--light-green);
   margin-bottom: .8rem;
+  
+  cursor: pointer;
 }
 
 button {
   width: 100%;
   color: #fff;
-  background: var(--light-green);
-  border: solid 4px var(--light-green);
-  
-}
-button:hover {
-  background: var(--dark-green);
-  border: solid 4px var(--dark-green);
+  background: transparent;
 }
 
 .button.cancel {
@@ -71,6 +72,15 @@ button:hover {
 }
 .button.cancel:hover {
   opacity: 1;
+}
+
+button[type="submit"] {
+  background: var(--light-green);
+  border: solid 1px var(--light-green);
+}
+button[type="submit"]:hover {
+  background: var(--dark-green);
+  border: solid 1px var(--dark-green);
 }
 
 
