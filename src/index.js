@@ -28,25 +28,15 @@ const addNewTransaction = document.getElementById('new-transaction');
 const cancelBtn = document.getElementById('cancel-button');
 const formElement = document.getElementById('transaction-form');
 const forgotPasswordLink = document.getElementById('forgot-password-link');
+const userAvatar = document.getElementById('user-avatar');
 const isLoginPage = !!loginPage;
 const isRegisterPage = !!registerPage;
 const isAppPage = !!appContainer;
-
 let unsubscribeTransactions = null;
+
 
 const setAuthMessage = (message) => {
   if (authMessage) authMessage.textContent = message;
-};
-
-const showApp = (user) => {
-  if (appContainer) appContainer.classList.remove('hidden');
-  if (userEmailLabel) userEmailLabel.textContent = user.email || 'Usuário';
-  if (signOutButton) signOutButton.classList.remove('hidden');
-};
-
-const showAuth = () => {
-  if (appContainer) appContainer.classList.add('hidden');
-  if (signOutButton) signOutButton.classList.add('hidden');
 };
 
 if (addNewTransaction) addNewTransaction.addEventListener('click', () => {
@@ -84,32 +74,47 @@ if (DOM.transactionsContainer) {
 }
 
 const teardownTransactions = () => {
-  if (typeof unsubscribeTransactions === 'function') {
-    unsubscribeTransactions();
-    unsubscribeTransactions = null;
-  }
-};
+    if (typeof unsubscribeTransactions === 'function') {
+        const teardownTransactions = () => {
+        unsubscribeTransactions();
+            unsubscribeTransactions = null;
+        }
+    };
+}
 
 onAuthStateChangedListener((user) => {
-  if (isLoginPage || isRegisterPage) {
-    if (user) {
-      window.location.replace('index.html');
-    }
+    window.currentUser = user;
+
+    if (isLoginPage || isRegisterPage) {
+    if (user) window.location.replace('index.html'); 
     return;
   }
 
   if (isAppPage) {
-    if (!user) {
-      window.location.replace('login.html');
-      return;
-    }
+      if (!user) {
+          window.location.replace('login.html');
+          return;
+        }
+        
+        if (userAvatar && user.photoURL) {
+          userAvatar.src = user.photoURL;
+          userAvatar.onerror = () => {
+            userAvatar.src = './assets/user-regular-full.svg';
+          };
+        } else if (userAvatar) {
+          userAvatar.src = './assets/user-regular-full.svg';
+        }
 
-    showApp(user);
-    teardownTransactions();
-    unsubscribeTransactions = subscribeTransactions(user.uid, (transactions) => {
-      transactionsSummary.setTransactions(transactions);
-      App.reload();
-    });
+        if (userEmailLabel) userEmailLabel.textContent = user.email || 'Usuário'; 
+        
+        teardownTransactions();
+        
+        unsubscribeTransactions = subscribeTransactions(user.uid, (transactions) => {
+            console.log('Auth state changed. Current user:', user.email);
+
+            transactionsSummary.setTransactions(transactions);
+            App.reload();
+        });
   }
 });
 

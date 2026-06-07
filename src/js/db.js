@@ -43,7 +43,7 @@ const transactionsCollection = collection(db, 'transactions');
 
 const createTransactionsQuery = (uid) => query(
   transactionsCollection,
-  where('uid', '==', uid),
+  where('userId', '==', uid),
   orderBy('date', 'desc'),
 );
 

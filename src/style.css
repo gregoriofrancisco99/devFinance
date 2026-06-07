@@ -25,6 +25,43 @@ main {
     margin: auto;
 }
 
+.auth_status {
+    position: fixed;
+    right: 2rem;
+    top: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.auth_status img {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    object-fit: cover;
+
+    cursor: pointer;
+}
+
+.auth_status .sign_out {
+    padding: .25em;
+    font-size: 1.7em;
+    color: #fff;
+
+    border: none;
+}
+
+.auth_status img {
+    color: #fff;
+}
+
+.auth_status .sign_out:hover {
+    cursor: pointer;
+}
+
 .sr-only {
     position: absolute;
     width: 1px;

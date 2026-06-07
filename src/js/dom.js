@@ -52,7 +52,7 @@ export const DOM = {
     tr.appendChild(tdDate);
     tr.appendChild(tdActions);
 
-    this.transactionsContainer.appendChild(tr);
+    return tr;
   },
 
   displayBalance() {

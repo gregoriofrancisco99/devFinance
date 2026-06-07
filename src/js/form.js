@@ -27,7 +27,6 @@ export const Form = {
   setTodayDate() {
     const today = new Date().toISOString().slice(0, 10);
     this.date.value = today;
-
   },
 
   formatAmountInput(event) {
@@ -133,15 +132,33 @@ export const Form = {
     try {
       this.validateFields();
       const values = this.formatValues();
+
+      const userId = window.currentUser.uid;
+      if(!userId) throw new Error('Usuário não autenticado');
+
+      const transactionData = {
+        ...values,
+        userId
+      };
+
+      if (this.submitButton) this.submitButton.disabled = true;
+
       if (this.editingId) {
-        await transactionsSummary.update(this.editingId, values);
+        transactionsSummary.update(this.editingId, transactionData).catch((error) => {
+         alert('Erro ao atualizar transação: ' + error.message);
+        });
       } else {
-        await transactionsSummary.add(values);
+        transactionsSummary.add(transactionData).catch((error) => {
+          alert('Erro ao adicionar transação: ' + error.message);
+        });
       }
+
       this.setCreateMode();
       this.modal.close();
     } catch (error) {
       alert(error.message);
+    } finally {
+      if (this.submitButton) this.submitButton.disabled = false;
     }
   },
 };

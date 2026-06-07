@@ -10,18 +10,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <title>dev.finance$</title>
 </head>
 
 <body>
   <header>
     <img src="./assets/logo.svg" alt="logo dev.finace$">
-    <div id="auth-status" class="auth-status hidden">
-      <span id="user-email"></span>
-      <button type="button" id="sign-out-button" class="button cancel">Sair</button>
+    <div id="auth-status" class="auth_status">
+      <img id="user-avatar" src="./assets/user-regular-full.svg" alt="Avatar do usuário" crossorigin="anonymous" access-control-allow-origin="*">
+      <button type="button" id="sign-out-button" class="button sign_out"><i class="fa-solid fa-arrow-right-from-bracket"></i><span class="sr-only">Sair</span></button>
     </div>
   </header>
-  <div id="app-container" class="hidden">
+  <div id="app-container">
   <main>
     <section id="balance">
       <h2 class="sr-only">Balanço</h2>
