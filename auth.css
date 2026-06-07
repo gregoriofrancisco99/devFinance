@@ -1,0 +1,159 @@
+:root {
+  --dark-color: #363f5f;
+  --light-green: #49aa26;
+  --dark-green: #368519;
+  --red: #e92929;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 93.75%;
+}
+
+body {
+  background: #f0f2f5;
+  font-family: 'Poppins', sans-serif;
+
+  display: grid;
+  height: 100vh;
+  margin: 0;
+  grid-template-rows: .6fr 1fr auto;
+}
+
+body header {
+    padding: 6em 0 0;
+}
+
+.auth-page {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem 4rem;
+}
+
+.auth-card {
+    position: absolute;
+    top: -8em;
+    width: min(420px, 100%);
+    background: #fff;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.08);
+
+    z-index: 999;
+}
+
+.auth-card h2 {
+  margin-bottom: 1.5rem;
+  color: var(--dark-color);
+  text-align: center;
+}
+
+.auth-card input,
+.auth-card .button {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.auth-card input {
+  width: 100%;
+  margin-bottom: 1rem;
+  border: 1px solid #aac;
+}
+
+.auth-card button img {
+  width: 1.5em;
+  margin-right: 0.5rem;
+}
+
+.auth-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.auth-card .button {
+  width: 100%;
+  border: none;
+  background: var(--dark-green);
+  color: #fff;
+  cursor: pointer;
+}
+
+.loading{
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-card .button:hover {
+  background: #2f6d18;
+}
+
+.auth-card #separator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  color: #a8a8b3;
+  font-size: 0.9rem;
+}
+
+.auth-card #separator::before,
+.auth-card #separator::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #a8a8b3;
+}
+
+.auth-secondary {
+  margin-top: 1rem;
+  color: #969cb3;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.auth-secondary a {
+  color: var(--light-green);
+  text-decoration: none;
+}
+
+.auth-message {
+  margin-top: 1rem;
+  color: #e92929;
+  min-height: 1.2rem;
+  text-align: center;
+}
+
+.button.google {
+  background: #4285f4;
+  color: #fff;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.button.google:hover {
+  background: #357ae8;
+}
+
+.button.google .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.hidden {
+  display: none !important;
+}

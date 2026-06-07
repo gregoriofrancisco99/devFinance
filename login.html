@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="auth.css" />
+
+  <title>dev.finance$ — Login</title>
+</head>
+
+<body>
+  <header>
+    <img src="./assets/logo.svg" alt="logo dev.finace$">
+  </header>
+
+  <section id="login-page" class="auth-page">
+    <div class="login_modal"></div>
+    <div class="auth-card">
+        <h2>Entrar ou criar conta</h2>
+        <form id="auth-form">
+            <input type="email" id="auth-email" placeholder="Email" required />
+            
+            <input type="password" required id="auth-password" placeholder="Senha"/>
+            
+            <div class="auth-actions">
+                <a href="#" id="forgot-password-link">Esqueceu a senha?</a>
+                
+                <button type="submit" id="sign-in-button" class="button">Entrar</button>
+                
+                <p class="auth-secondary">É sua primeira vez? <a href="./register.html">Crie uma conta</a></p>
+                
+                <div id="separator">Ou</div>
+                
+                <button type="button" id="sign-in-with-google" class="google button">
+                    <img src="./assets/google_icon.svg" alt="Entrar com Google">
+                    Entrar com Google
+                </button>
+                
+                <p id="auth-message" class="auth-message hiden" ></p>
+            
+            </div>
+        </form>
+    </div>
+  </section>
+  
+
+  <footer>
+    <p>dev.finace$ <br />design by RocketSeat, <br />code by: Gregório Francisco</p>
+  </footer>
+
+  <script src="bundle.js"></script>
+</body>
+
+</html>
