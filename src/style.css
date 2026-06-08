@@ -393,14 +393,29 @@ footer {
     opacity: .6;
 }
 
-@media (min-width: 800px) {
+@media (max-width: 800px) {
     html {
-        font-size: 87.75%;
+        font-size: .7em;
+    }
+
+    body{
+        height: 100vh;
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        gap: 1em;
+
+    }
+
+    body header {
+        padding-top: 3em;
     }
 
     #balance {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
+        grid-template-row: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    .card {
+        margin: 0;
     }
 }
