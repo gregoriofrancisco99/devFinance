@@ -10,6 +10,8 @@ module.exports = {
   mode: isProduction ? 'production' : 'development',
   
   entry: './src/index.js',
+  devtool: isProduction ? false : 'eval-source-map', 
+  
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',

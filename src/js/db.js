@@ -22,9 +22,8 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithRedirect,
+  sendPasswordResetEmail as firebaseSendPasswordResetEmail
 } from 'firebase/auth';
-
-import { sendPasswordResetEmail as firebaseSendPasswordResetEmail } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAn096tA0ya0L8Zd6xpDQbBwQfEwWIbQNo',
