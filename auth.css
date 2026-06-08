@@ -28,7 +28,7 @@ body {
 body header {
   background: var(--dark-green);
   text-align: center;
-  padding: 6em 0 0;
+  padding: 8em 0 0;
 }
 
 .auth-page {
@@ -160,6 +160,12 @@ body header {
   display: none !important;
 }
 
+@media (max-width: 1080px) {
+      body header {
+        padding: em;
+    }  
+}
+
 @media (max-width: 800px) {
   bdody {
     display: grid;
@@ -167,7 +173,7 @@ body header {
     height: 100vh;
   }
     body header {
-        padding: 0;
+        padding: 4 0 0;
     }
     .auth-card {
         position: initial;
