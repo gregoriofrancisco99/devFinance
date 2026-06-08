@@ -90,7 +90,7 @@ export const addTransaction = async (transaction) => {
 
   await addDoc(transactionsCollection, {
     ...transaction,
-    uid: user.uid,
+    userId: user.uid,
     date: transaction.date ? Timestamp.fromDate(new Date(transaction.date)) : null,
     createdAt: serverTimestamp(),
     modifiedAt: serverTimestamp(),

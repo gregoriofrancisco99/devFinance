@@ -75,12 +75,11 @@ if (DOM.transactionsContainer) {
 
 const teardownTransactions = () => {
     if (typeof unsubscribeTransactions === 'function') {
-        const teardownTransactions = () => {
         unsubscribeTransactions();
-            unsubscribeTransactions = null;
-        }
+        unsubscribeTransactions = null;
+
     };
-}
+  }
 
 onAuthStateChangedListener((user) => {
     window.currentUser = user;
@@ -193,13 +192,15 @@ if (registerButton) {
 
 if (signInwithGoogleButton) {
     signInwithGoogleButton.addEventListener('click', async () => {
-        signInwithGoogleButton.disabled = true;
-        signInwithGoogleButton.classList.add('loading');
-        try {
+      try {
+            signInwithGoogleButton.disabled = true;
+            signInwithGoogleButton.classList.add('loading');
             setAuthMessage('');
             await loginWithGoogle();
         } catch (error) {
             setAuthMessage(error.message);
+              signInwithGoogleButton.disabled = false;
+            signInwithGoogleButton.classList.remove('loading');
         }
     });
 } else {
