@@ -64,7 +64,7 @@ onAuthStateChangedListener((user) => {
   if (isLoginPage || isRegisterPage) {
     if (user) {
       console.log('Usuário autenticado detetado. Redirecionando para a Dashboard...');
-      window.location.replace('index.html');
+      window.location.replace('/');
     }
     return; 
   }
@@ -72,7 +72,7 @@ onAuthStateChangedListener((user) => {
   if (isAppPage) {
     if (!user) {
       console.log('Acesso restrito. Redirecionando para login.html...');
-      window.location.replace('login.html');
+      window.location.replace('/login.html');
       return;
     }
 
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = await loginWithGoogle();
         if (user) {
           console.log('Sucesso no Popup! Redirecionando...');
-          window.location.replace('index.html');
+          window.location.replace('/');
         }
       } catch (error) {
         console.error('Erro ao autenticar com Popup:', error);
