@@ -2,24 +2,29 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-// 👇 Detect if Vercel (or you) are running a production build
 const isProduction = process.env.NODE_ENV === 'production' || process.env.VERCEL === '1';
 
 module.exports = {
-  // 1. Dynamic Mode: Use 'production' on Vercel, 'development' locally
   mode: isProduction ? 'production' : 'development',
   
+  // 💡 MUDANÇA: Apenas um entry point centralizado
   entry: './src/index.js',
-  devtool: isProduction ? false : 'eval-source-map', 
   
+  devtool: isProduction ? false : 'eval-source-map', 
+
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'main.js', // Nome fixo simplificado
+    chunkFilename: '[name].bundle.js',
     clean: true,
     assetModuleFilename: 'assets/[name][ext]',
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+    },
+  },
 
-  // 2. FIX THE 12-MIN TIMEOUT: Only watch files locally, NEVER on Vercel production
   watch: !isProduction,
 
   devServer: {
@@ -43,22 +48,29 @@ module.exports = {
     ],
   },
   plugins: [
+    // Garante que o index.html use o bundle principal
     new HtmlWebpackPlugin({
       template: './index.html',
       filename: 'index.html',
-      // Minify only in production to optimize download speed
-      minify: isProduction, 
+      chunks: ['main'], 
+    }),
+    // 💡 MUDANÇA: Garante que o login.html use o MESMO bundle principal
+    new HtmlWebpackPlugin({
+      template: './login.html',
+      filename: 'login.html',
+      chunks: ['main'],
+    }),
+    // 💡 MUDANÇA: Garante que o register.html use o MESMO bundle principal
+    new HtmlWebpackPlugin({
+      template: './register.html',
+      filename: 'register.html',
+      chunks: ['main'],
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'src/assets', to: 'assets' },
-        { from: 'login.html', to: '' },
-        { from: 'register.html', to: '' },
-        { from: 'auth.css', to: '' },
+        { from: 'assets', to: 'assets', noErrorOnMissing: true },
+        { from: 'auth.css', to: 'auth.css', noErrorOnMissing: true },
       ],
     }),
   ],
-  performance: {
-    hints: isProduction ? false : 'warning', 
-  }
 };

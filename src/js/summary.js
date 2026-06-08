@@ -1,5 +1,12 @@
 import { Transaction } from './transaction';
-import { addTransaction, deleteTransaction, updateTransaction } from './db';
+
+let transactionsDbPromise = null;
+const loadTransactionsDb = () => {
+  if (!transactionsDbPromise) {
+    transactionsDbPromise = import(/* webpackChunkName: "transactions-db" */ './transactions-db');
+  }
+  return transactionsDbPromise;
+};
 
 export const transactionsSummary = {
   all: [],
@@ -29,10 +36,12 @@ export const transactionsSummary = {
   },
 
   async add(newTransaction) {
+    const { addTransaction } = await loadTransactionsDb();
     await addTransaction(newTransaction);
   },
 
   async update(id, values) {
+    const { updateTransaction } = await loadTransactionsDb();
     await updateTransaction(id, values);
   },
 
@@ -42,6 +51,7 @@ export const transactionsSummary = {
       : this.all[idOrIndex]?.id;
 
     if (!transactionId) return;
+    const { deleteTransaction } = await loadTransactionsDb();
     await deleteTransaction(transactionId);
   },
 };
