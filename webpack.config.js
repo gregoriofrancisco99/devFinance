@@ -48,28 +48,41 @@ module.exports = {
     ],
   },
   plugins: [
-    // Garante que o index.html use o bundle principal
     new HtmlWebpackPlugin({
       template: './index.html',
       filename: 'index.html',
-      chunks: ['main'], 
+      chunks: ['main'],
+      inject: 'body',
+      minify: isProduction,
     }),
-    // 💡 MUDANÇA: Garante que o login.html use o MESMO bundle principal
     new HtmlWebpackPlugin({
       template: './login.html',
       filename: 'login.html',
       chunks: ['main'],
+      inject: 'body',
+      minify: isProduction,
     }),
-    // 💡 MUDANÇA: Garante que o register.html use o MESMO bundle principal
     new HtmlWebpackPlugin({
       template: './register.html',
       filename: 'register.html',
       chunks: ['main'],
+      inject: 'body',
+      minify: isProduction,
     }),
+
+    // 💡 A SOLUÇÃO AQUI: Forçar o Webpack a levar o auth.css e os assets para a dist/
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'assets', to: 'assets', noErrorOnMissing: true },
-        { from: 'auth.css', to: 'auth.css', noErrorOnMissing: true },
+        { 
+          from: 'auth.css', 
+          to: 'auth.css',
+          noErrorOnMissing: true 
+        },
+        { 
+          from: 'assets', 
+          to: 'assets',
+          noErrorOnMissing: true 
+        }
       ],
     }),
   ],
