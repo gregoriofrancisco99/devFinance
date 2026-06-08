@@ -21,7 +21,7 @@ import {
   signOut,
   onAuthStateChanged,
   GoogleAuthProvider,
-  signInWithPopup,
+  signInWithRedirect,
 } from 'firebase/auth';
 
 import { sendPasswordResetEmail as firebaseSendPasswordResetEmail } from 'firebase/auth';
@@ -62,7 +62,7 @@ export const logoutUser = async () => {
 export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
 
 export const loginWithGoogle = async () => {
-    return signInWithPopup(auth, googleProvider);
+    return signInWithRedirect(auth, googleProvider);
 };
 
 export const getTransactions = async (uid) => {
