@@ -56,4 +56,7 @@ module.exports = {
       ],
     }),
   ],
+  performance: {
+    hints: isProduction ? false : 'warning', 
+  }
 };
